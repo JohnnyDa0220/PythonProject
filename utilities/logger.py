@@ -3,7 +3,6 @@ import logging
 from datetime import datetime
 from utilities.config_reader import get_properties
 
-
 class Log:
     @staticmethod
     def capture_logger():
