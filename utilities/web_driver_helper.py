@@ -1,11 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
 from utilities.screenshot import Screenshot
-
+from selenium.webdriver.remote.webdriver import WebDriver
+from logging import Logger
 
 class WebDriverHelper:
     """
@@ -20,8 +20,7 @@ class WebDriverHelper:
         driver (selenium.webdriver): The active Selenium WebDriver instance.
         logger (logging.Logger): Logger used for structured info/warning/error messages.
     """
-
-    def __init__(self, driver, logger):
+    def __init__(self, driver: WebDriver, logger: Logger):
         """
         Author: Robin Mahanta
         Initialize the WebDriverHelper.
@@ -225,7 +224,7 @@ class WebDriverHelper:
             - Captures screenshots and logs pass/fail details.
         """
         try:
-            element = self.find_an_element(locator, timeout)
+            element = self.find_an_element(locator, elements, timeout)
             assert element is not None, f"{elements} with locator {locator} should be present."
             self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
             self.logger.info(f"Assertion Pass: {elements} with locator {locator} is present.")
@@ -284,7 +283,7 @@ class WebDriverHelper:
             - Captures a full-page screenshot and logs results.
         """
         try:
-            element = self.find_an_element(locator, timeout)
+            element = self.find_an_element(locator, elements, timeout)
             if element:
                 self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
                 self.driver.execute_script("arguments[0].style.border='3px solid green'", element)
