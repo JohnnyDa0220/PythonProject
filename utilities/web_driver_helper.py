@@ -1,3 +1,5 @@
+
+from typing import Tuple
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -33,22 +35,45 @@ class WebDriverHelper:
         self.driver = driver
         self.logger = logger
 
-    def find_an_element(self, locator, elements, timeout=10):
+    def _normalize_locator(self, locator):
         """
-        Author: Robin Mahanta
-        Locate a single element using an explicit wait until presence is detected.
-        Parameters:
-            locator (tuple): A locator tuple (By, value), e.g., (By.ID, "username").
-            elements (str): A human-readable name/label for logging (e.g., "Username field").
-            timeout (int, optional): Max seconds to wait for presence. Defaults to 10.
-        Returns:
-            selenium.webdriver.remote.webelement.WebElement | None:
-                The located element if found within the timeout; otherwise None.
-        Notes:
-            - Uses `presence_of_element_located`, which does not guarantee visibility.
-            - Emits info logs on success and error logs on failure.
+        Accepts both ('xpath', '//div') and (By.XPATH, '//div')
+        Converts string-based locators to Selenium By format.
         """
+        by, value = locator
+
+        if isinstance(by, By):
+            return locator
+
+        by_map = {
+            "id": By.ID,
+            "name": By.NAME,
+            "xpath": By.XPATH,
+            "css": By.CSS_SELECTOR,
+            "css selector": By.CSS_SELECTOR,
+            "class": By.CLASS_NAME,
+            "class name": By.CLASS_NAME,
+            "tag": By.TAG_NAME,
+            "tag name": By.TAG_NAME,
+            "link text": By.LINK_TEXT,
+            "partial link text": By.PARTIAL_LINK_TEXT,
+        }
+
+        if isinstance(by, str):
+            by_lower = by.lower()
+            if by_lower in by_map:
+                return by_map[by_lower], value
+
+        raise ValueError(f"Invalid locator format: {locator}")
+
+    def find_an_element(
+            self,
+            locator: Tuple[By, str],
+            elements: str,
+            timeout: int = 10
+    ):
         try:
+            locator = self._normalize_locator(locator)
             element = WebDriverWait(self.driver, timeout).until(
                 ec.presence_of_element_located(locator)
             )
@@ -58,39 +83,121 @@ class WebDriverHelper:
             self.logger.error(f"Error finding {elements} with locator {locator}: {e}")
             return None
 
-    def click_on_element(self, locator, button_to_be_clicked):
-        """
-        Author: Robin Mahanta
-        Click a located element and capture a screenshot for traceability.
-        Parameters:
-            locator (tuple): A locator tuple (By, value) to identify the element.
-            elements (str): A label used for logs and screenshot naming.
-            self.logger.info(f"Click on {button_to_be_clicked}")
-        Returns:
-            None
-        Behavior:
-            - Highlights the element in yellow before clicking, then resets style.
-            - Captures a full-page screenshot after clicking.
-            - On failure, captures an error screenshot and logs the exception.
-        """
+    def click_on_element(
+            self,
+            locator: Tuple[By, str],
+            button_to_be_clicked: str,
+            visual: bool = True,
+            timeout: int = 10
+    ):
+
         try:
-            element = WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(locator))
+            locator = self._normalize_locator(locator)
+            element = WebDriverWait(self.driver, timeout).until(
+                ec.element_to_be_clickable(locator)
+            )
+
+            # Screenshot BEFORE action
             Screenshot.capture_full_screenshot(self.driver, button_to_be_clicked)
-            self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
-            self.driver.execute_script("arguments[0].style.border=''", element)
-            element.click()
-            # self.driver.execute_script("arguments[0].setAttribute('onclick', 'this.style.backgroundColor=\"red\";');", element)
+
+            # Highlight element
+            self.driver.execute_script(
+                "arguments[0].style.backgroundColor='yellow';", element
+            )
+            self.driver.execute_script(
+                "arguments[0].style.border='3px solid red';", element
+            )
+
             try:
-                self.driver.execute_script("arguments[0].style.backgroundColor = '';", element)
-            except:
+                element.click()
+            except Exception:
+                # JS fallback without breaking visuals
+                self.driver.execute_script("arguments[0].click();", element)
+
+            # Restore original style
+            try:
+                self.driver.execute_script(
+                    "arguments[0].style.backgroundColor='';", element
+                )
+                self.driver.execute_script(
+                    "arguments[0].style.border='';", element
+                )
+            except Exception:
                 pass
+
+            # Screenshot AFTER action
+            Screenshot.capture_full_screenshot(self.driver, f"{button_to_be_clicked}_clicked")
+
             self.logger.info(f"Clicked on {button_to_be_clicked}")
-            Screenshot.capture_full_screenshot(self.driver, f"{button_to_be_clicked}")
             self.logger.info(f"taken screenshot of element {button_to_be_clicked}")
+
         except Exception as e:
-            self.logger.error(f"Error occured while clicking on {button_to_be_clicked}: {e}")
-            Screenshot.capture_full_screenshot(self.driver, f"{button_to_be_clicked}_error")
-            raise Exception("Error in " + str(e))
+            self.logger.error(
+                f"Error occurred while clicking on {button_to_be_clicked}: {e}"
+            )
+            Screenshot.capture_full_screenshot(
+                self.driver, f"{button_to_be_clicked}_error"
+            )
+            raise
+
+    # def find_an_element(self, locator, elements, timeout=10):
+    #     """
+    #     Author: Robin Mahanta
+    #     Locate a single element using an explicit wait until presence is detected.
+    #     Parameters:
+    #         locator (tuple): A locator tuple (By, value), e.g., (By.ID, "username").
+    #         elements (str): A human-readable name/label for logging (e.g., "Username field").
+    #         timeout (int, optional): Max seconds to wait for presence. Defaults to 10.
+    #     Returns:
+    #         selenium.webdriver.remote.webelement.WebElement | None:
+    #             The located element if found within the timeout; otherwise None.
+    #     Notes:
+    #         - Uses `presence_of_element_located`, which does not guarantee visibility.
+    #         - Emits info logs on success and error logs on failure.
+    #     """
+    #     try:
+    #         element = WebDriverWait(self.driver, timeout).until(
+    #             ec.presence_of_element_located(locator)
+    #         )
+    #         self.logger.info(f"{elements} found with locator {locator}")
+    #         return element
+    #     except Exception as e:
+    #         self.logger.error(f"Error finding {elements} with locator {locator}: {e}")
+    #         return None
+    #
+    # def click_on_element(self, locator, button_to_be_clicked):
+    #     """
+    #     Author: Robin Mahanta
+    #     Click a located element and capture a screenshot for traceability.
+    #     Parameters:
+    #         locator (tuple): A locator tuple (By, value) to identify the element.
+    #         elements (str): A label used for logs and screenshot naming.
+    #         self.logger.info(f"Click on {button_to_be_clicked}")
+    #     Returns:
+    #         None
+    #     Behavior:
+    #         - Highlights the element in yellow before clicking, then resets style.
+    #         - Captures a full-page screenshot after clicking.
+    #         - On failure, captures an error screenshot and logs the exception.
+    #     """
+    #     try:
+    #         element = WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(locator))
+    #         Screenshot.capture_full_screenshot(self.driver, button_to_be_clicked)
+    #         self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
+    #         self.driver.execute_script("arguments[0].style.border=''", element)
+    #         element.click()
+    #         # self.driver.execute_script("arguments[0].setAttribute('onclick', 'this.style.backgroundColor=\"red\";');", element)
+    #         try:
+    #             self.driver.execute_script("arguments[0].style.backgroundColor = '';", element)
+    #         except:
+    #             pass
+    #         self.logger.info(f"Clicked on {button_to_be_clicked}")
+    #         Screenshot.capture_full_screenshot(self.driver, f"{button_to_be_clicked}")
+    #         self.logger.info(f"taken screenshot of element {button_to_be_clicked}")
+    #     except Exception as e:
+    #         self.logger.error(f"Error occured while clicking on {button_to_be_clicked}: {e}")
+    #         Screenshot.capture_full_screenshot(self.driver, f"{button_to_be_clicked}_error")
+    #         raise Exception("Error in " + str(e))
 
     def input_text_then_enter(self, locator, text, elements):
         """
@@ -108,6 +215,7 @@ class WebDriverHelper:
             - Logs and screenshots on failure.
         """
         try:
+            locator = self._normalize_locator(locator)
             element = self.find_an_element(locator, elements)
             if element:
                 element.clear()
@@ -140,6 +248,7 @@ class WebDriverHelper:
             - Logs success or failure and captures a screenshot on error.
         """
         try:
+            locator = self._normalize_locator(locator)
             element = self.find_an_element(locator, elements)
             if element:
                 self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
@@ -172,6 +281,7 @@ class WebDriverHelper:
             - Logs success or error.
         """
         try:
+            locator = self._normalize_locator(locator)
             element = WebDriverWait(self.driver, timeout).until(
                 ec.visibility_of_element_located(locator))
             self.driver.execute_script("arguments[0].scrollIntoView();", element)
@@ -224,6 +334,7 @@ class WebDriverHelper:
             - Captures screenshots and logs pass/fail details.
         """
         try:
+            locator = self._normalize_locator(locator)
             element = self.find_an_element(locator, elements, timeout)
             assert element is not None, f"{elements} with locator {locator} should be present."
             self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
@@ -283,6 +394,7 @@ class WebDriverHelper:
             - Captures a full-page screenshot and logs results.
         """
         try:
+            locator = self._normalize_locator(locator)
             element = self.find_an_element(locator, elements, timeout)
             if element:
                 self.driver.execute_script("arguments[0].style.backgroundColor = 'yellow';", element)
@@ -303,7 +415,6 @@ class WebDriverHelper:
             return False
 
     def replace_string_and_verify_url(self, text, url_text, timeout=10):
-
         '''
         Author Name: Anushka Verma
         Method Name: replace_string_and_verify_url
@@ -316,15 +427,22 @@ class WebDriverHelper:
             url_text (expected substring in the new window's URL)
         '''
         try:
-            locator_text = '//a[text()="text_to_be_replaced"]'.replace('text_to_be_replaced', text)
+            locator_text = '//a[text()="text_to_be_replaced"]'.replace(
+                'text_to_be_replaced', text
+            )
             locator = (By.XPATH, locator_text)
-            self.click_on_element(locator, text)
+
+            # Disable visuals ONLY for this dynamic click
+            self.click_on_element(locator, text, visual=False)
+
             self.switch_to_new_window()
             self.verify_url(url_text)
+
             self.driver.close()
             self.driver.switch_to.window(self.driver.window_handles[0])
+
         except Exception as e:
-            self.logger.error(f"Error replacing text for locator")
+            self.logger.error(f"Error replacing text for locator: {e}")
 
     def verify_url(self, expected_text):
 

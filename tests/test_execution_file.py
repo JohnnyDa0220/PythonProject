@@ -2,6 +2,7 @@
 import pytest
 from utilities.config_reader import get_properties
 from utilities.logger import Log
+from utilities.excel_reader import read_excel
 from pages.homepage import HomePage
 
 # from pages.baby_body_wash_page import BabyBodyWash
@@ -10,13 +11,13 @@ from pages.homepage import HomePage
 # from pages.baby_product_page import BabyProduct
 # from pages.honey_results_page import HoneyPage
 # from pages.tablet_product_page import TabletProductPage
-# from pages.crocin_result_page import CrocinResultPage
-# from pages.first_product_page import FirstProductPage
+from pages.crocin_result_page import CrocinResultPage
+from pages.first_product_page import FirstProductPage
 # from pages.home_page import HomePage
 # from pages.doctors_page import DoctorPage
 # from pages.product_page import ProductPage
-# from pages.cart_page import CartPage
-# from pages.search_medicine_page import SearchMedicinePage
+from pages.cart_page import CartPage
+from pages.search_medicine_page import SearchMedicinePage
 # from pages.dolo_search_result_page import DoloSearchPage
 # from pages.medicine_cart_page import MedicineCartPage
 # from pages.baby_care_page import BabyCare
@@ -44,16 +45,20 @@ class Test_Page:
 
         home = HomePage(driver, Test_Page.logger)
         home.click_on_search_bar()
-        # search = SearchMedicinePage(self.driver, Test_Page.logger)
-        # search.click_and_enter_medicine_name_and_press_enter(
-        #     read_excel(get_properties("PATH", "excel_path"), "Sagnick", 2, 1)
-        # )
-        # crocin = CrocinResultPage(self.driver, Test_Page.logger)
-        # crocin.click_on_first_item()
-        # first = FirstProductPage(self.driver, Test_Page.logger)
-        # first.add_crocin()
-        # cart = CartPage(self.driver, Test_Page.logger)
-        # cart.cart_page_operation()
+
+        search = SearchMedicinePage(driver, Test_Page.logger)
+        search.click_and_enter_medicine_name_and_press_enter(
+            read_excel(get_properties("PATH", "excel_path"), "Robin", 2, 1)
+        )
+
+        crocin = CrocinResultPage(driver, Test_Page.logger)
+        crocin.click_on_first_item()
+
+        first = FirstProductPage(driver, Test_Page.logger)
+        first.add_crocin()
+
+        cart = CartPage(driver, Test_Page.logger)
+        cart.cart_page_operation()
 
     # @pytest.mark.smoke
     # def test_method_add_honey_to_cart_and_click_on_about_us(self):
