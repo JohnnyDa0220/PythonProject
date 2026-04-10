@@ -6,7 +6,7 @@ from utilities.screenshot import Screenshot
 from time import sleep
 class SearchMedicinePage:
     """
-Author Name: Debjani Kundu
+Author Name: ROBIN MAHANTA
 Class Name: SearchMedicinePage
 Description: This class contains methods to interact with the search medicine functionality of the application.
              It uses WebDriverHelper for element interactions and provides methods to search for medicines,
@@ -23,7 +23,7 @@ Constructor Parameters:
 
     def click_and_enter_medicine_name(self,medicine_name):
         """
-    Author Name: Debjani Kundu
+    Author Name: ROBIN MAHANTA
     Method Name: click_and_enter_medicine_name
     Description: Clicks on the search input field and enters the provided medicine name.
     Return Type: None
@@ -36,7 +36,7 @@ Constructor Parameters:
        
     def click_and_enter_medicine_name_and_press_enter(self, medicine_name):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: click_and_enter_medicine_name_and_press_enter
         Description: Clicks on the medicine search input field, enters the provided medicine name, and presses Enter.
         Return Type: None
@@ -49,7 +49,7 @@ Constructor Parameters:
     def click_view_all_results_button(self):
         
         """
-    Author Name: Debjani Kundu
+    Author Name: ROBIN MAHANTA
     Method Name: click_view_all_results_button
     Description: Clicks on the 'View All Results' button to display all search results.
     Return Type: None
@@ -63,7 +63,7 @@ Constructor Parameters:
     def search_and_open_medicine_results(self,medicine_name):
         
         """
-    Author Name: Debjani Kundu
+    Author Name: ROBIN MAHANTA
     Method Name: search_and_open_medicine_results
     Description: Searches for a medicine and opens the full list of results.
     Return Type: None

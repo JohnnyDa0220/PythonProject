@@ -35,7 +35,7 @@ class Test_Page:
     @pytest.mark.smoke
     def test_method_add_crocin_to_cart(self, driver):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: test_method_add_crocin_to_cart
         Description: Verifies the flow of searching for a medicine, selecting it, adding to cart, and performing cart operations.
         """
@@ -63,7 +63,7 @@ class Test_Page:
     # @pytest.mark.smoke
     # def test_method_add_honey_to_cart_and_click_on_about_us(self):
     #     """
-#         Author Name: Robin Mahanta
+#         Author Name: ROBIN MAHANTA
     #     Method Name: test_method_add_honey_to_cart_and_click_on_about_us
     #     Description: Verifies the honey product flow and About Us navigation from the home page.
     #     Return Type: None
@@ -78,7 +78,7 @@ class Test_Page:
     # @pytest.mark.smoke
     # def test_verify_links_in_services_from_footer(self):
     #     '''
-#         Author Name: Robin Mahanta
+#         Author Name: ROBIN MAHANTA
     #     Method Name: test_verify_links_in_services_from_footer
     #     Description: This test verifies that all links under the Services section in the footer are working correctly.
     #     Return Type: None
@@ -90,7 +90,7 @@ class Test_Page:
     # @pytest.mark.smoke
     # def test_personal_care_products(self):
     #     '''
-#         Author Name: Robin Mahanta
+#         Author Name: ROBIN MAHANTA
     #     Method Name: test_personal_care_products
     #     Description: This test navigates through multiple personal care product categories and verifies product access.
     #     Return Type: None
@@ -112,7 +112,7 @@ class Test_Page:
     # @pytest.mark.smoke
     # def test_ayurveda_and_health_devices(self):
     #     """
-#         Author Name: Robin Mahanta
+#         Author Name: ROBIN MAHANTA
     #     Method Name: test_method_test_case_5
     #     Description: Verifies Health Devices and Ayurveda page functionalities by navigating through respective flows.
     #     Return Type: None
@@ -128,7 +128,7 @@ class Test_Page:
     # @pytest.mark.smoke
     # def test_verify_urls_of_book_lab_tests_at_home(self):
     #     """
-#         Author Name: Robin Mahanta
+#         Author Name: ROBIN MAHANTA
     #     Method Name: test_method_test_case_6
     #     Description: Verifies all URLs related to 'Book Lab Tests at Home' from the homepage.
     #     Return Type: None
@@ -140,7 +140,7 @@ class Test_Page:
     # @pytest.mark.smoke
     # def test_search_and_add_medicine_to_cart(self):
     #     """
-#         Author Name: Robin Mahanta
+#         Author Name: ROBIN MAHANTA
     #     Method Name: test_method_test_case_7
     #     Description: Executes a complete test flow that includes searching for a medicine, applying filters,
     #                 selecting a product, and performing cart interactions.

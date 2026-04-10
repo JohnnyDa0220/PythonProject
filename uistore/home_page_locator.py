@@ -1,6 +1,22 @@
+"""
+Author Name: ROBIN MAHANTA
+Module: home_page_locator.py
+Purpose: UI element locators for the Apollo Pharmacy home page.
+Description: Contains Selenium locators (XPath, CSS selectors, etc.) for all interactive
+             elements on the home page, following the Page Object Model pattern.
+"""
+
 from selenium.webdriver.common.by import By
 
 class HomePageLocator:
+    """
+    Author Name: ROBIN MAHANTA
+    Class: HomePageLocator
+    Purpose: Centralizes all home page element locators.
+    Description: Contains XPath and other selectors for navigating and interacting
+                 with elements on the Apollo Pharmacy home page.
+    """
+    
     search_bar_field = (By.XPATH, "//div[contains(@data-placeholder,'Search')]")
     # TestCase 5
     health_devices = (By.XPATH, "(//a[text()='Health Devices'])[2]")

@@ -416,7 +416,7 @@ class WebDriverHelper:
 
     def replace_string_and_verify_url(self, text, url_text, timeout=10):
         '''
-        Author Name: Anushka Verma
+        Author Name: ROBIN MAHANTA
         Method Name: replace_string_and_verify_url
         Description: This method dynamically replaces a placeholder in an XPath string with the provided text,
                     clicks on the corresponding element, switches to the new window, verifies the URL,
@@ -447,7 +447,7 @@ class WebDriverHelper:
     def verify_url(self, expected_text):
 
         '''
-        Author Name: Anushka Verma
+        Author Name: ROBIN MAHANTA
         Method Name: verify_url
         Description: This method checks if the expected text is present in the current URL and logs the result.
         Return Type: None

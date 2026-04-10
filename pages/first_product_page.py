@@ -5,7 +5,7 @@ from time import sleep
 class FirstProductPage:
     def __init__(self, driver, logger):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: __init__
         Description: Initializes the FirstProductPage with WebDriver and Logger instances, and sets up WebDriverHelper.
         Return Type: None
@@ -17,7 +17,7 @@ class FirstProductPage:
 
     def verify_text_Consume_Type(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: verify_text_Consume_Type
         Description: Verifies that the 'Consume Type' text is present on the product page.
         Return Type: None
@@ -27,7 +27,7 @@ class FirstProductPage:
 
     def click_on_join_circle(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_join_circle
         Description: Clicks on the 'Join Circle' button on the product page.
         Return Type: None
@@ -37,7 +37,7 @@ class FirstProductPage:
 
     def click_on_twelve_month(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_twelve_month
         Description: Selects the 12-month subscription option.
         Return Type: None
@@ -47,7 +47,7 @@ class FirstProductPage:
 
     def close_join_circle_popup(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: close_join_circle_popup
         Description: Closes the 'Join Circle' popup window.
         Return Type: None
@@ -57,7 +57,7 @@ class FirstProductPage:
 
     def click_on_number_of_strips(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_number_of_strips
         Description: Opens the dropdown to select the number of strips.
         Return Type: None
@@ -67,7 +67,7 @@ class FirstProductPage:
 
     def click_on_two(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_two
         Description: Selects the option for two strips from the dropdown.
         Return Type: None
@@ -77,7 +77,7 @@ class FirstProductPage:
 
     def click_view_cart(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: click_view_cart
         Description: Clicks on the 'View Cart' button to proceed to the cart.
         Return Type: None
@@ -87,7 +87,7 @@ class FirstProductPage:
 
     def add_crocin(self):
         """
-        Author Name: Sagnick Routh
+        Author Name: ROBIN MAHANTA
         Method Name: add_crocin
         Description: Executes the full flow to add Crocin to the cart including subscription selection and quantity.
         Return Type: None

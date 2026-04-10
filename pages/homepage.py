@@ -5,7 +5,7 @@ from time import sleep
 class HomePage:
     def __init__(self, driver, logger):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: __init__
         Description: Initializes the HomePage with WebDriver and Logger instances, and sets up WebDriverHelper.
         Return Type: None
@@ -17,7 +17,7 @@ class HomePage:
 
     def click_on_search_bar(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_search_bar
         Description: Clicks on the search bar field on the home page using the WebDriverHelper.
         Return Type: None
@@ -27,7 +27,7 @@ class HomePage:
 
     def hover_on_apollo(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: hover_on_apollo
         Description: Hovers over the Apollo products section on the home page.
         Return Type: None
@@ -37,7 +37,7 @@ class HomePage:
 
     def click_on_honey(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_honey
         Description: Clicks on the Honey product category from the Apollo section.
         Return Type: None
@@ -47,7 +47,7 @@ class HomePage:
 
     def honey_operations(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: honey_operations
         Description: Performs the complete flow to access the Honey product section by hovering and clicking.
         Return Type: None
@@ -58,7 +58,7 @@ class HomePage:
 
     def click_on_about_us(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: click_on_about_us
         Description: Scrolls to and clicks on the 'About Us' section, then switches to the new window.
         Return Type: None
@@ -70,7 +70,7 @@ class HomePage:
 
     def verify_text_services_in_footer(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_text_services_in_footer
         Description: This method scrolls to the Services section in the footer and verifies its presence.
         Return Type: None
@@ -82,7 +82,7 @@ class HomePage:
 
     def verify_consult_physicians_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_physicians_link
         Description: This method verifies the Consult Physicians link under Services.
         Return Type: None
@@ -92,7 +92,7 @@ class HomePage:
 
     def verify_consult_dermatologists_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_dermatologists_link
         Description: This method verifies the Consult Dermatologists link under Services.
         Return Type: None
@@ -102,7 +102,7 @@ class HomePage:
 
     def verify_consult_paediatricians_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_paediatricians_link
         Description: This method verifies the Consult Paediatricians link under Services.
         Return Type: None
@@ -112,7 +112,7 @@ class HomePage:
 
     def verify_consult_gynaecologists_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_gynaecologists_link
         Description: This method verifies the Consult Gynaecologists link under Services.
         Return Type: None
@@ -122,7 +122,7 @@ class HomePage:
 
     def verify_consult_gastroenterologists_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_gastroenterologists_link
         Description: This method verifies the Consult Gastroenterologists link under Services.
         Return Type: None
@@ -132,7 +132,7 @@ class HomePage:
 
     def verify_consult_cardiologists_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_cardiologists_link
         Description: This method verifies the Consult Cardiologists link under Services.
         Return Type: None
@@ -142,7 +142,7 @@ class HomePage:
 
     def verify_consult_dietitians_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_dietitians_link
         Description: This method verifies the Consult Dietitians link under Services.
         Return Type: None
@@ -152,7 +152,7 @@ class HomePage:
 
     def verify_consult_ENT_specialists(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_ENT_specialists
         Description: This method verifies the Consult ENT Specialists link under Services.
         Return Type: None
@@ -162,7 +162,7 @@ class HomePage:
 
     def verify_consult_geriatricians(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_geriatricians
         Description: This method verifies the Consult Geriatricians link under Services.
         Return Type: None
@@ -172,7 +172,7 @@ class HomePage:
 
     def verify_consult_diabetologists(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_consult_diabetologists
         Description: This method verifies the Consult Diabetologists link under Services.
         Return Type: None
@@ -182,7 +182,7 @@ class HomePage:
 
     def verify_apollo_health_insurance_link(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_apollo_health_insurance_link
         Description: This method verifies the Apollo Health Insurance link under Services.
         Return Type: None
@@ -192,7 +192,7 @@ class HomePage:
 
     def verify_links_in_services_from_footer(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_links_in_services_from_footer
         Description: This method verifies all the links listed under the Services section in the footer.
         Return Type: None
@@ -213,7 +213,7 @@ class HomePage:
 
     def click_hair_oil_under_personal_care(self):
         '''
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: click_hair_oil_under_personal_care
         Description: This method hovers over the Personal Care section and clicks on the Hair Oils option.
         Return Type: None
@@ -224,7 +224,7 @@ class HomePage:
 
     def verify_text_book_lab_tests_at_home(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_text_book_lab_tests_at_home
         Description: Verifies the presence of the 'Book Lab Tests at Home' text on the homepage.
         Return Type: None
@@ -236,7 +236,7 @@ class HomePage:
 
     def verify_rt_pcr_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_rt_pcr_url
         Description: Verifies the URL for the RT PCR Test At Home.
         Return Type: None
@@ -248,7 +248,7 @@ class HomePage:
 
     def verify_book_lab_tests_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_book_lab_tests_url
         Description: Verifies the URL for the Book Lab Tests at Home service.
         Return Type: None
@@ -259,7 +259,7 @@ class HomePage:
 
     def verify_rental_profile_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_rental_profile_url
         Description: Verifies the URL for the Renal Profile (KFT, RFT Test).
         Return Type: None
@@ -271,7 +271,7 @@ class HomePage:
 
     def verify_hemogram_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_hemogram_url
         Description: Verifies the URL for the Hemogram Test.
         Return Type: None
@@ -282,7 +282,7 @@ class HomePage:
 
     def verify_lipid_profile_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_lipid_profile_url
         Description: Verifies the URL for the Lipid Profile Test.
         Return Type: None
@@ -294,7 +294,7 @@ class HomePage:
 
     def verify_thyroid_profile_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_thyroid_profile_url
         Description: Verifies the URL for the Thyroid Profile Test (T3 T4 Tsh Test).
         Return Type: None
@@ -306,7 +306,7 @@ class HomePage:
 
     def verify_d_dimer_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_d_dimer_url
         Description: Verifies the URL for the D Dimer Test.
         Return Type: None
@@ -317,7 +317,7 @@ class HomePage:
 
     def verify_urine_culture_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_urine_culture_url
         Description: Verifies the URL for the Urine Culture Test.
         Return Type: None
@@ -329,7 +329,7 @@ class HomePage:
 
     def verify_complete_blood_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_complete_blood_url
         Description: Verifies the URL for the Complete Blood Count (CBC Test).
         Return Type: None
@@ -341,7 +341,7 @@ class HomePage:
 
     def verify_widal_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_widal_url
         Description: Verifies the URL for the Widal Test.
         Return Type: None
@@ -353,7 +353,7 @@ class HomePage:
 
     def verify_liver_function_url(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_liver_function_url
         Description: Verifies the URL for the Liver Function Test (LFT Test).
         Return Type: None
@@ -365,7 +365,7 @@ class HomePage:
 
     def verify_urls_of_book_lab_tests_at_home(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: verify_urls_of_book_lab_tests_at_home
         Description: Executes all verification methods for URLs and text related to 'Book Lab Tests at Home'.
         Return Type: None
@@ -386,7 +386,7 @@ class HomePage:
 
     def click_health_devices(self):
         """
-        Author Name: Robin Mahanta
+        Author Name: ROBIN MAHANTA
         Method Name: click_health_devices
         Description: Scrolls to the 'health_devices' section and clicks on the corresponding element.
         Return Type: None
